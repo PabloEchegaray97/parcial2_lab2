@@ -4,14 +4,10 @@ public class Comanda {
     private int id;
     private int idProducto;
     private int cantidad;
+    private int idEmpleado;
 
-    public Comanda() {}
-
-    public Comanda(int id, int idProducto, int cantidad) {
-        this.id = id;
-        this.idProducto = idProducto;
-        this.cantidad = cantidad;
-    }
+    private Producto producto;
+    private Empleado empleado;
 
     public int getId() {
         return id;
@@ -35,5 +31,29 @@ public class Comanda {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+    }
+
+    public int getIdEmpleado() {
+        return idEmpleado;
+    }
+
+    public void setIdEmpleado(int idEmpleado) {
+        this.idEmpleado = idEmpleado;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
     }
 }

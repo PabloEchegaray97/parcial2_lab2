@@ -1,17 +1,11 @@
 package minimarket.entidades;
 
+import java.util.List;
+
 public class Proveedor {
     private int id;
     private String nombre;
-    private String contacto;
-
-    public Proveedor() {}
-
-    public Proveedor(int id, String nombre, String contacto) {
-        this.id = id;
-        this.nombre = nombre;
-        this.contacto = contacto;
-    }
+    private List<Producto> productos;
 
     public int getId() {
         return id;
@@ -29,11 +23,11 @@ public class Proveedor {
         this.nombre = nombre;
     }
 
-    public String getContacto() {
-        return contacto;
+    public List<Producto> getProductos() {
+        return productos;
     }
 
-    public void setContacto(String contacto) {
-        this.contacto = contacto;
+    public void setProductos(List<Producto> productos) {
+        this.productos = productos;
     }
 }
