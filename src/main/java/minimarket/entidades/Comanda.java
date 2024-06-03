@@ -1,12 +1,12 @@
 package minimarket.entidades;
 
+import java.util.List;
+
 public class Comanda {
     private int id;
-    private int idProducto;
-    private int cantidad;
     private int idEmpleado;
+    private List<Producto> productos;
 
-    private Producto producto;
     private Empleado empleado;
 
     public int getId() {
@@ -17,22 +17,6 @@ public class Comanda {
         this.id = id;
     }
 
-    public int getIdProducto() {
-        return idProducto;
-    }
-
-    public void setIdProducto(int idProducto) {
-        this.idProducto = idProducto;
-    }
-
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
     public int getIdEmpleado() {
         return idEmpleado;
     }
@@ -41,12 +25,12 @@ public class Comanda {
         this.idEmpleado = idEmpleado;
     }
 
-    public Producto getProducto() {
-        return producto;
+    public List<Producto> getProductos() {
+        return productos;
     }
 
-    public void setProducto(Producto producto) {
-        this.producto = producto;
+    public void setProductos(List<Producto> productos) {
+        this.productos = productos;
     }
 
     public Empleado getEmpleado() {
