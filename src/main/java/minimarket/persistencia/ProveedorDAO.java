@@ -12,12 +12,12 @@ public class ProveedorDAO extends DAO {
     }
 
     public void ingresarProveedor(Proveedor proveedor) throws Exception {
-        String sql = "INSERT INTO proveedores(nombre, contacto) VALUES('" + proveedor.getNombre() + "', '" + proveedor.getContacto() + "')";
+        String sql = "INSERT INTO proveedores(nombre, contacto) VALUES('" + proveedor.getNombre() + "', '" + "')";
         insertarModificarEliminar(sql);
     }
 
     public void modificarProveedor(Proveedor proveedor) throws Exception {
-        String sql = "UPDATE proveedores SET nombre = '" + proveedor.getNombre() + "', contacto = '" + proveedor.getContacto() + "' WHERE id_proveedor = " + proveedor.getId();
+        String sql = "UPDATE proveedores SET nombre = '" + proveedor.getNombre() + "', contacto = '" +  "' WHERE id_proveedor = " + proveedor.getId();
         insertarModificarEliminar(sql);
     }
 

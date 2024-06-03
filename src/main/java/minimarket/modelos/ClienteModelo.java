@@ -1,8 +1,9 @@
 package minimarket.modelos;
 
-import java.util.ArrayList;
 import minimarket.entidades.Cliente;
 import minimarket.persistencia.ClienteDAO;
+
+import java.util.ArrayList;
 
 public class ClienteModelo {
     private ClienteDAO clienteDAO = new ClienteDAO(this);
@@ -19,8 +20,8 @@ public class ClienteModelo {
         clienteDAO.eliminarCliente(cliente);
     }
 
-    public Cliente buscarClientePorCodigo(int codigo) throws Exception {
-        return clienteDAO.buscarClientePorCodigo(codigo);
+    public Cliente buscarClientePorId(int id) throws Exception {
+        return clienteDAO.buscarClientePorId(id);
     }
 
     public ArrayList<Cliente> buscarClientes() throws Exception {

@@ -1,8 +1,13 @@
 package minimarket.persistencia;
 
-import java.util.ArrayList;
 import minimarket.entidades.Cliente;
 import minimarket.modelos.ClienteModelo;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 public class ClienteDAO extends DAO {
     ClienteModelo clienteModelo;
@@ -12,27 +17,28 @@ public class ClienteDAO extends DAO {
     }
 
     public void ingresarCliente(Cliente cliente) throws Exception {
-        String sql = "INSERT INTO clientes(codigo, razon_social) VALUES(" + cliente.getCodigo() + ", '" + cliente.getRazonSocial() + "')";
+        String sql = "INSERT INTO clientes(nombre, direccion) VALUES('" + cliente.getNombre() + "', '" + cliente.getDireccion() + "')";
         insertarModificarEliminar(sql);
     }
 
     public void modificarCliente(Cliente cliente) throws Exception {
-        String sql = "UPDATE clientes SET razon_social = '" + cliente.getRazonSocial() + "' WHERE codigo = " + cliente.getCodigo();
+        String sql = "UPDATE clientes SET nombre = '" + cliente.getNombre() + "', direccion = '" + cliente.getDireccion() + "' WHERE id_cliente = " + cliente.getId();
         insertarModificarEliminar(sql);
     }
 
     public void eliminarCliente(Cliente cliente) throws Exception {
-        String sql = "DELETE FROM clientes WHERE codigo = " + cliente.getCodigo();
+        String sql = "DELETE FROM clientes WHERE id_cliente = " + cliente.getId();
         insertarModificarEliminar(sql);
     }
 
-    public Cliente buscarClientePorCodigo(int codigo) throws Exception {
-        String sql = "SELECT * FROM clientes WHERE codigo = " + codigo;
+    public Cliente buscarClientePorId(int id) throws Exception {
+        String sql = "SELECT * FROM clientes WHERE id_cliente = " + id;
         consultarBase(sql);
         if (resultado.next()) {
             Cliente cliente = new Cliente();
-            cliente.setCodigo(codigo);
-            cliente.setRazonSocial(resultado.getString("razon_social"));
+            cliente.setId(id);
+            cliente.setNombre(resultado.getString(2));
+            cliente.setDireccion(resultado.getString(3));
             return cliente;
         }
         return null;
@@ -44,8 +50,9 @@ public class ClienteDAO extends DAO {
         ArrayList<Cliente> clientes = new ArrayList<>();
         while (resultado.next()) {
             Cliente cliente = new Cliente();
-            cliente.setCodigo(resultado.getInt("codigo"));
-            cliente.setRazonSocial(resultado.getString("razon_social"));
+            cliente.setId(resultado.getInt(1));
+            cliente.setNombre(resultado.getString(2));
+            cliente.setDireccion(resultado.getString(3));
             clientes.add(cliente);
         }
         return clientes;

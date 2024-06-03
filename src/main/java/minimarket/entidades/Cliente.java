@@ -1,33 +1,31 @@
 package minimarket.entidades;
 
-import java.util.List;
-
 public class Cliente {
-    private int codigo;
-    private String razonSocial;
-    private List<Comanda> comandas;
+    private int id;
+    private String nombre;
+    private String direccion;
 
-    public int getCodigo() {
-        return codigo;
+    public int getId() {
+        return id;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getRazonSocial() {
-        return razonSocial;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setRazonSocial(String razonSocial) {
-        this.razonSocial = razonSocial;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public List<Comanda> getComandas() {
-        return comandas;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setComandas(List<Comanda> comandas) {
-        this.comandas = comandas;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 }
