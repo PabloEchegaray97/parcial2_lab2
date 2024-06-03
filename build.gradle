@@ -12,8 +12,17 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    //Dependencias Base de Dato h2
     implementation group: 'com.h2database', name: 'h2', version: '2.2.224'
     implementation 'com.h2database:h2:2.1.214'
+    
+    //Dependencias log4j2
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.20.0'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.20.0'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.20.0'
+
+    implementation group: 'com.sun.mail', name: 'javax.mail', version: '1.6.2'
+    implementation group: 'javax.mail', name: 'javax.mail-api', version: '1.6.2'
 }
 
 test {
