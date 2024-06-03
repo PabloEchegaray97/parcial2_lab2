@@ -33,7 +33,6 @@ public class ProveedorDAO extends DAO {
             Proveedor proveedor = new Proveedor();
             proveedor.setId(id);
             proveedor.setNombre(resultado.getString(2));
-            proveedor.setContacto(resultado.getString(3));
             return proveedor;
         }
         return null;
@@ -47,7 +46,6 @@ public class ProveedorDAO extends DAO {
             Proveedor proveedor = new Proveedor();
             proveedor.setId(resultado.getInt(1));
             proveedor.setNombre(resultado.getString(2));
-            proveedor.setContacto(resultado.getString(3));
             proveedores.add(proveedor);
         }
         return proveedores;
