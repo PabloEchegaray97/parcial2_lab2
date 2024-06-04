@@ -16,10 +16,6 @@ import javax.swing.JTextField;
 
 public class Funciones {
 
-    public static void main(String[] args) {
-
-    }
-
     //Condiciones de ingreso de datos:
     public static boolean VerificacionDeLetras(String texto) { //Verfica que el texto ingresado sea igual a ciertos string, devuelve bool
         boolean letrasCorrectas = false;
