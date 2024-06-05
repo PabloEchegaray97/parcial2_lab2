@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <Console name="ConsoleLogger" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        </Console>
+
+        <RollingFile name="FileLogger" fileName="C:\Users\betsa\Documents\UTN-TUP\Laboratorio II.txt"
+                     filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.zip">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+            <Policies>
+                <CronTriggeringPolicy schedule ="0 20 23 * * ?"/>
+                <SizeBasedTriggeringPolicy />
+            </Policies>
+        </RollingFile>
+
+        <SMTP name="EmailLogger"
+              subject="Comanda Solicitada"
+              to="xxxxxxx@alumnos.frm.utn.edu.ar"
+              from="xxxxxxx@alumnos.frm.utn.edu.ar"
+              smtpHost="smtp.alumnos.frm.utn.edu.ar"
+              smtpPort="25"
+              smtpProtocol="smtp"
+              ignoreExceptions="false"
+              smtpUsername="xxxxxxx@alumnos.frm.utn.edu.ar"
+              smtpPassword="xxxxxxxxxxxr">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n" />
+            <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+        </SMTP>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="EmailLogger" level="debug" additivity="false">
+            <AppenderRef ref="EmailLogger" />
+        </Logger>
+        <Logger name="FileLogger" level="info" additivity="false">
+            <AppenderRef ref="FileLogger" />
+        </Logger>
+
+        <Logger name="ConsoleLogger" level="error" additivity="false">
+            <AppenderRef ref="ConsoleLogger" />
+        </Logger>
+
+        <Root level="INFO">
+            <AppenderRef ref="EmailLogger" level="DEBUG"/>
+            <AppenderRef ref="FileLogger" level="INFO"/>
+            <AppenderRef ref="ConsoleLogger" level="ERROR"/>
+        </Root>
+    </Loggers>
+</Configuration>
