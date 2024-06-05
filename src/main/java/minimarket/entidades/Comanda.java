@@ -9,6 +9,15 @@ public class Comanda {
 
     private Empleado empleado;
 
+    public Comanda(int id, int idEmpleado, List<Producto> productos, Empleado empleado) {
+        this.id = id;
+        this.idEmpleado = idEmpleado;
+        this.productos = productos;
+        this.empleado = empleado;
+    }
+
+    public Comanda() {
+    }
     public int getId() {
         return id;
     }
