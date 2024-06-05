@@ -6,6 +6,13 @@ public class Producto {
     private double precio;
     private int stock;
 
+    public Producto() {
+    }
+
+    public Producto(String nombre) {
+        this.nombre = nombre;
+    }
+
     public int getId() {
         return id;
     }
