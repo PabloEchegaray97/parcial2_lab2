@@ -8,6 +8,11 @@ public class Empleado {
     private String puesto;
     private List<Comanda> comandas;
 
+    public Empleado(String nombre) {
+        this.nombre = nombre;
+    }
+    public Empleado() {
+    }
     public int getId() {
         return id;
     }
