@@ -1,6 +1,7 @@
 package minimarket;
 import minimarket.controladores.MenuControlador;
 
+import minimarket.log4j2.LogPrueba;
 import minimarket.persistencia.DAO;
 import minimarket.modelos.ClienteModelo;
 import java.util.Scanner;
@@ -49,6 +50,9 @@ public class Main {
     public static void main(String[] args) {
         try {
             crearTablas();
+            //Prueba del funcionamiento Log
+            LogPrueba logMenu = new LogPrueba();
+            logMenu.mostrarMenuLogs();
         } catch (Exception e) {
             System.out.println("Error al crear las tablas: " + e.getMessage());
         }
