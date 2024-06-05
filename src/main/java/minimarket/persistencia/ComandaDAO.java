@@ -41,7 +41,7 @@ public class ComandaDAO extends DAO {
                 sql = "SELECT p.* FROM Producto p INNER JOIN ComandaProducto cp ON p.id = cp.idProducto WHERE cp.idComanda = " + comanda.getId();
                 consultarBase(sql);
 
-                List<Producto> productos = new ArrayList<>();
+                ArrayList<Producto> productos = new ArrayList<>();
                 while (resultado.next()) {
                     Producto producto = new Producto();
                     producto.setId(resultado.getInt("id"));
@@ -75,7 +75,7 @@ public class ComandaDAO extends DAO {
                 sql = "SELECT p.* FROM Producto p INNER JOIN ComandaProducto cp ON p.id = cp.idProducto WHERE cp.idComanda = " + comanda.getId();
                 consultarBase(sql);
 
-                List<Producto> productos = new ArrayList<>();
+                ArrayList<Producto> productos = new ArrayList<>();
                 while (resultado.next()) {
                     Producto producto = new Producto();
                     producto.setId(resultado.getInt("id"));

@@ -1,11 +1,11 @@
 package minimarket.entidades;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Comanda {
     private int id;
     private int idEmpleado;
-    private List<Producto> productos;
+    private ArrayList<Producto> productos;
 
     private Empleado empleado;
 
@@ -25,11 +25,11 @@ public class Comanda {
         this.idEmpleado = idEmpleado;
     }
 
-    public List<Producto> getProductos() {
+    public ArrayList<Producto> getProductos() {
         return productos;
     }
 
-    public void setProductos(List<Producto> productos) {
+    public void setProductos(ArrayList<Producto> productos) {
         this.productos = productos;
     }
 

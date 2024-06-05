@@ -1,11 +1,14 @@
 package minimarket.controladores;
 
+import minimarket.entidades.Producto;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
 
 public class MenuControlador {
     private ClienteControlador clienteControlador = new ClienteControlador();
     private ControladorProducto productoControlador=new ControladorProducto();
+    private ComandaControlador comandaControlador=new ComandaControlador();
 
     public void mostrarMenuPrincipal() {
         Scanner scanner = new Scanner(System.in);
@@ -98,18 +101,22 @@ public class MenuControlador {
 
             switch (opcion) {
                 case 1:
+                    comandaControlador.crearComanda();
                     break;
                 case 2:
                     String idModificar = JOptionPane.showInputDialog("Ingrese ID de la comanda a modificar: ");
                     int id_modificar=Integer.parseInt(idModificar);
+                    comandaControlador.modificarLista(id_modificar);
                     break;
                 case 3:
                     String id_buscar = JOptionPane.showInputDialog("Ingrese ID de la comanda a buscar: ");
                     int idBuscar=Integer.parseInt(id_buscar);
+                    comandaControlador.mostrarComanda(idBuscar);
                     break;
                 case 4:
                     String id_eliminar=JOptionPane.showInputDialog("Ingrese ID de la comanda a eliminar: ");
                     int idEliminar = Integer.parseInt(id_eliminar);
+                    comandaControlador.eliminarComanda(idEliminar);
                     break;
                 case 0:
                     System.out.println("Volviendo al Menú Principal...");
@@ -173,6 +180,7 @@ public class MenuControlador {
                     double precio=Integer.parseInt(price);
                     String cant = JOptionPane.showInputDialog("Ingrese stock del producto: ");
                     int stock=Integer.parseInt(cant);
+
                     productoControlador.ingresarProducto(nombre,precio,stock);
 
                     break;
@@ -184,14 +192,20 @@ public class MenuControlador {
                     double preciom=Integer.parseInt(pricem);
                     String cantm = JOptionPane.showInputDialog("Ingrese stock del producto: ");
                     int stockm=Integer.parseInt(cantm);
+
+                    productoControlador.modificarProducto(id_modificar,nombrem,preciom,stockm);
                     break;
                 case 3:
                     String id_buscar = JOptionPane.showInputDialog("Ingrese ID del producto a buscar: ");
                     int idBuscar=Integer.parseInt(id_buscar);
+
+                    productoControlador.buscarProductoPorId(idBuscar);
                     break;
                 case 4:
                     String id_eliminar=JOptionPane.showInputDialog("Ingrese ID del producto a eliminar: ");
                     int idEliminar = Integer.parseInt(id_eliminar);
+
+                    productoControlador.eliminarProducto(idEliminar);
                     break;
                 case 0:
                     System.out.println("Volviendo al Menú Principal...");
