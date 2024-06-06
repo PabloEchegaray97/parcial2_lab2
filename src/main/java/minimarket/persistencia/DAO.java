@@ -11,7 +11,7 @@ public abstract class DAO {
     protected Statement sentencia;
 
     private final String JDBC_DRIVER = "org.h2.Driver";
-    private final String DB_URL = "jdbc:h2:tcp://localhost/~/minimarket";
+    private final String DB_URL = "jdbc:h2:tcp://localhost/~/test";
     private final String USER = "sa";
     private final String PASS = "";
 

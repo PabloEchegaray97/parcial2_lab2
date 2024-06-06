@@ -1,8 +1,6 @@
 package minimarket.controladores;
-import minimarket.entidades.Cliente;
 import minimarket.entidades.Producto;
 import minimarket.entidades.Comanda;
-import minimarket.modelos.ClienteModelo;
 import minimarket.modelos.ComandaModelo;
 
 import javax.swing.JOptionPane;

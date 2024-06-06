@@ -5,7 +5,8 @@ import minimarket.modelos.ClienteModelo;
 
 import java.util.List;
 
-public class ClienteControlador {
+public class
+ClienteControlador {
     private ClienteModelo clienteModelo = new ClienteModelo();
 
     public void ingresarCliente(String nombre, String direccion) {
