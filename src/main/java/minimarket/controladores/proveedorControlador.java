@@ -1,16 +1,15 @@
 package minimarket.controladores;
-import minimarket.entidades.Producto;
 import minimarket.entidades.Comanda;
-import minimarket.modelos.ComandaModelo;
+import minimarket.entidades.Producto;
+import minimarket.entidades.Proveedor;
+import minimarket.modelos.ProveedorModelo;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
+public class proveedorControlador {
 
-public class ComandaControlador {
+    private ProveedorModelo proveedorModelo = new ProveedorModelo();
 
-    private ComandaModelo comandaModelo = new ComandaModelo();
-    //-------------------------------------------------------------------------------------------------------------------------------------------------
-    //Se crea una comanda para poder agregar productos, estos son enviados al metodo  "ingresarComanda" para asi llamar a ComandaModelo.ingresarComanda
-    public void crearComanda() {
+    public void crearProveedor(String Nombre) {
         ArrayList<Producto> productos = new ArrayList<>();
         boolean agregarOtro = true;
 
@@ -38,26 +37,27 @@ public class ComandaControlador {
             }
         }
 
-        ingresarComanda(productos);
+        ingresarProveedor(Nombre, productos);
     }
-    public void ingresarComanda(ArrayList<Producto> producto) {
+    public void ingresarProveedor(String nombre,ArrayList<Producto> producto) {
         try {
-            Comanda comanda = new Comanda();
-            comanda.setProductos(producto);
-            comandaModelo.ingresarComanda(comanda);
+            Proveedor proveedor = new Proveedor();
+            proveedor.setNombre(nombre);
+            proveedor.setProductos(producto);
+            proveedorModelo.ingresarProveedor(proveedor);
 
-            System.out.println("Comanda ingresada exitosamente.");
+            System.out.println("Proveedor ingresada exitosamente.");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    //-------------------------------------------------------------------------------------------------------------------------------------------------
 
-    //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public void modificarLista(int id) {
+    //------------------------------------------------------------------------------------
+
+    public void modificarLista(int id, String Nombre) {
         ArrayList<Producto> productos = new ArrayList<>();
         boolean agregarOtro = true;
-        int idm=id;
+
         while (agregarOtro) {
             String nombre = JOptionPane.showInputDialog("Ingrese el nombre del producto:");
             double precio = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio del producto:"));
@@ -75,58 +75,51 @@ public class ComandaControlador {
                 agregarOtro = false;
             }
         }
-        modificarComanda(idm,productos);
+        modificarProveedor(id,Nombre,productos);
 
     }
-    public void modificarComanda(int id, ArrayList<Producto>Modificacion_productos) {
+    public void modificarProveedor(int id,String nombre, ArrayList<Producto>Modificacion_productos) {
         try {
-            Comanda comanda = comandaModelo.buscarComandaPorId(id);
-            if (comanda != null) {
-               comanda.setProductos(Modificacion_productos);
-               comandaModelo.modificarComanda(comanda);
-                System.out.println("Cliente modificado exitosamente.");
+            Proveedor proveedor= proveedorModelo.buscarProveedorPorId(id);
+            if (proveedor != null) {
+                proveedor.setProductos(Modificacion_productos);
+                proveedor.setNombre(nombre);
+                proveedorModelo.modificarProveedor(proveedor);
+
+                System.out.println("Proveedor modificado exitosamente.");
             } else {
-                System.out.println("Cliente no encontrado.");
+                System.out.println("Proveedor no encontrado.");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    //------------------------------------------------------------------------------------------------------------------------------------------------
 
-    //------------------------------------------------------------------------------------------------------------------------------------------------
-    public void mostrarComanda(int id){
+    //------------------------------------------------------------------------------------
+
+    public void mostrarProveedor(int id){
         try {
-            Comanda comanda = comandaModelo.buscarComandaPorId(id);
-            if (comanda != null) {
+            Proveedor proveedor=proveedorModelo.buscarProveedorPorId(id);
+
+            if (proveedor != null) {
                 System.out.println("--------------------------------------");
-                System.out.println("Comanda completa: ");
+                System.out.println("Productos de este proveedor: ");
                 System.out.println(" ");
-                for (int i=0;i<comanda.getProductos().size();i++) {
+                for (int i=0;i<proveedor.getProductos().size();i++) {
 
                     System.out.println("-------------------Producto N° " +i+ "-------------------");
-                    System.out.println("Nombre producto: " + comanda.getProductos().get(i).getNombre());
-                    System.out.println("Precio del producto: $" + comanda.getProductos().get(i).getPrecio());
-                    System.out.println("Stock del producto: " + comanda.getProductos().get(i).getStock());
+                    System.out.println("Nombre producto: " + proveedor.getProductos().get(i).getNombre());
+                    System.out.println("Precio del producto: $" + proveedor.getProductos().get(i).getPrecio());
+                    System.out.println("Stock del producto: " + proveedor.getProductos().get(i).getStock());
                     System.out.println("---------------------------------------------------------");
                 }
             } else {
-                System.out.println("Cliente no encontrado.");
+                System.out.println("Proveedor no encontrado.");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    //------------------------------------------------------------------------------------------------------------------------------------------------
-    public void eliminarComanda(int id){
-        try {
-            comandaModelo.eliminarComanda(id);
-            System.out.println("Cliente eliminado exitosamente.");
+    //------------------------------------------------------------------------------------
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    }
-
-
+}

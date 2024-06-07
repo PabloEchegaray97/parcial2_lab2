@@ -6,6 +6,7 @@ public class MenuControlador {
     private ClienteControlador clienteControlador = new ClienteControlador();
     private ControladorProducto productoControlador=new ControladorProducto();
     private ComandaControlador comandaControlador=new ComandaControlador();
+    private proveedorControlador proveedorControlador=new proveedorControlador();
 
     public static void crearTablas() throws Exception {
         DAO dao = new DAO() {};  // Instancia anónima de DAO para usar sus métodos
@@ -280,19 +281,22 @@ public class MenuControlador {
         //------------------------------------OPCIONES-------------------------------------------
         do{
             opcion = Funciones.OpcionesMenu(Botones, mensaje, titulo)+1;
-            // Ingresar Proveerdor\n2. Modificar Proveedor\n3. Buscar proveedor\n4. Eliminar proveedor\n0. Volver al Menú Principal ");
+            // Ingresar Proveerdor\n2. Modificar Proveedor\n3. mostrar proveedor\n4. Eliminar proveedor\n0. Volver al Menú Principal ");
             switch (opcion) {
                 case 1:
                     String nombre = JOptionPane.showInputDialog("Ingrese nombre del proveedor: ");
+                    proveedorControlador.crearProveedor(nombre);
                     break;
                 case 2:
                     String idModificar = JOptionPane.showInputDialog("Ingrese ID del proveedor a modificar: ");
                     int id_modificar=Integer.parseInt(idModificar);
                     String nombrem = JOptionPane.showInputDialog("Ingrese nombre del producto: ");
+                    proveedorControlador.modificarLista(id_modificar,nombrem);
                     break;
                 case 3:
-                    String id_buscar = JOptionPane.showInputDialog("Ingrese ID del proveedor a buscar: ");
+                    String id_buscar = JOptionPane.showInputDialog("Ingrese ID del proveedor a mostrar: ");
                     int idBuscar=Integer.parseInt(id_buscar);
+                    proveedorControlador.mostrarProveedor(idBuscar);
                     break;
                 case 4:
                     String id_eliminar=JOptionPane.showInputDialog("Ingrese ID del proveedor a eliminar: ");
