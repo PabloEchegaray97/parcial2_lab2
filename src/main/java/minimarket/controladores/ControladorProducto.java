@@ -65,4 +65,8 @@ public class ControladorProducto {
             e.printStackTrace();
         }
     }
+
+    public void IngresoMercaderia(){
+
+    }
 }
